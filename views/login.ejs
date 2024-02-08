@@ -1,0 +1,18 @@
+<%- layout('layout/boilerplate') %>
+<div class="form">
+      <h1>Login</h1>
+      <form action="/login" method="post">
+            <p>
+                  <label for="email">Email Address</label>
+                  <input type="email" placeholder="enter your email" id="email" name="email">
+            </p>
+            <p>
+                  <label for="password">Password</label>
+                  <input type="password" placeholder="enter password" id="password" name="password">
+            </p>
+            <h4><%= incorrect %></h4>
+            <button type="submit">Login</button>
+      </form>
+</div>
+<p>i don't have an account?</p>
+<a href="/signup"><button>Signup</button></a>
