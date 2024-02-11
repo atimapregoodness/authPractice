@@ -55,17 +55,42 @@ app.use(methodOverride('_method'))
 app.use((req, res, next) => {
       res.locals.success = req.flash('success')
       res.locals.incorrect = req.flash('incorrect')
+      res.locals.error = req.flash('error')
 
       next()
 })
-
+app.get('/acct/:id', (req, res) => {
+      const { id } = req.params;
+      const user = User.findById(id)
+      res.render('acct', {user})
+})
 app.get('/signup', (req, res) => {
       res.render('signup')
 })
 
-// app.post('/signup', async (req, res) => {
-//       const
-// })
+app.post('/signup', async (req, res) => {
+      try {
+            const { username, email, password } = req.body;
+            const newUser = new User({ email, username })
+            const registeredUser = await User.register(newUser, password)
+            req.flash('success', 'Successfully created account')
+            res.redirect('/login')
+            
+
+      } catch (e) {
+            req.flash('error', e.message)
+            res.redirect('/signup')
+      }
+})
+
+app.get('/login', (req, res) => {
+      res.render('login')
+})
+
+app.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), (req, res) => {
+      res.redirect('/acct', {})
+})
+
 
 app.listen(3000, () => {    
       console.log('listening to port:3000')

@@ -1,10 +1,11 @@
 <%- layout('layout/boilerplate') %>
 <div class="form">
       <h1>Signup</h1>
+      <h1><%= error %></h1>
       <form action="/signup" method="post">
             <p>
                   <label for="username">User Name</label>
-                  <input type="text" placeholder="enter a user name" id="username" name="userName">
+                  <input type="text" placeholder="enter a user name" id="username" name="username">
             </p>
             <p>
                   <label for="email">Email Address</label>
