@@ -1,10 +1,8 @@
 <%- layout('layout/boilerplate') %>
-<div class="info">
-      <h1>username: <%= user.username %></h1>
-      <h1>email: <%= user.email %></h1>
-</div>
 
-<form action="/logout" method="post">
+<h1><%= success %></h1>
+
+<form action="/logout" method="get">
       <button>Logout</button>
 </form>
 

@@ -9,7 +9,9 @@ const bcrypt = require('bcrypt')
 const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')    //requiring passport (1)
-const LocalStrategy = require('passport-local') // requiring passport-local (2)
+const LocalStrategy = require('passport-local'); // requiring passport-local (2)
+const {isLoggedIn} = require('./middleware')
+
 
 const configSession = {
       secret: 'ohboythisismysecret',
@@ -59,15 +61,22 @@ app.use((req, res, next) => {
 
       next()
 })
-app.get('/acct/:id', (req, res) => {
-      const { id } = req.params;
-      const user = User.findById(id)
-      res.render('acct', {user})
+app.get('/acct', isLoggedIn, (req, res) => {
+      res.render('acct')
 })
 app.get('/signup', (req, res) => {
       res.render('signup')
 })
 
+app.get('/logout', (req, res, next) => {
+      req.logOut(function (err) {
+            return next (err)
+      })
+      req.flash('success', 'successfully logout')
+      res.redirect('/login')
+
+})
+   
 app.post('/signup', async (req, res) => {
       try {
             const { username, email, password } = req.body;
@@ -88,7 +97,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), (req, res) => {
-      res.redirect('/acct', {})
+      res.redirect('/acct')
 })
 
 
