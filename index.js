@@ -53,16 +53,17 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(methodOverride('_method'))
 
-
 app.use((req, res, next) => {
+      res.locals.currentUser = req.user;
       res.locals.success = req.flash('success')
       res.locals.incorrect = req.flash('incorrect')
       res.locals.error = req.flash('error')
-
       next()
 })
-app.get('/acct', isLoggedIn, (req, res) => {
-      res.render('acct')
+app.get('/acct/:id', isLoggedIn, async (req, res) => {
+      const {id} = req.params
+      const loginUser = User.findById(id)
+      res.render('acct', loginUser)
 })
 app.get('/signup', (req, res) => {
       res.render('signup')
@@ -97,7 +98,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), (req, res) => {
-      res.redirect('/acct')
+      res.redirect(`acct/${req.user._id}`)
 })
 
 
