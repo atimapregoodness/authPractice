@@ -60,10 +60,8 @@ app.use((req, res, next) => {
       res.locals.error = req.flash('error')
       next()
 })
-app.get('/acct/:id', isLoggedIn, async (req, res) => {
-      const {id} = req.params
-      const loginUser = User.findById(id)
-      res.render('acct', loginUser)
+app.get('/acct', isLoggedIn,async (req, res) => {
+      res.render('acct')
 })
 app.get('/signup', (req, res) => {
       res.render('signup')
@@ -75,7 +73,7 @@ app.get('/logout', (req, res, next) => {
       })
       req.flash('success', 'successfully logout')
       res.redirect('/login')
-
+ M  
 })
    
 app.post('/signup', async (req, res) => {
@@ -98,7 +96,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), (req, res) => {
-      res.redirect(`acct/${req.user._id}`)
+      res.redirect(`/acct`)
 })
 
 
