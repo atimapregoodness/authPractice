@@ -71,9 +71,8 @@ app.get('/logout', (req, res, next) => {
       req.logOut(function (err) {
             return next (err)
       })
-      req.flash('success', 'successfully logout')
+      req.flash('logoutMsg', 'successfully logout')
       res.redirect('/login')
- M  
 })
    
 app.post('/signup', async (req, res) => {
@@ -81,11 +80,9 @@ app.post('/signup', async (req, res) => {
             const { username, email, password } = req.body;
             const newUser = new User({ email, username })
             const registeredUser = await User.register(newUser, password)
-            req.flash('success', 'Successfully created account')
             res.redirect('/login')
-            
 
-      } catch (e) {
+      } catch (e) { 
             req.flash('error', e.message)
             res.redirect('/signup')
       }
