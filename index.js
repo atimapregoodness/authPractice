@@ -17,7 +17,6 @@ const configSession = {
       secret: 'ohboythisismysecret',
       resave: false,
       saveUninitialized: true,
-
       cookie: {
             httpOnly: true,
             expires: Date.now() + 1000 * 60 * 24 * 7,
@@ -60,6 +59,8 @@ app.use((req, res, next) => {
       res.locals.error = req.flash('error')
       next()
 })
+
+
 app.get('/acct', isLoggedIn,async (req, res) => {
       res.render('acct')
 })
@@ -89,7 +90,11 @@ app.post('/signup', async (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-      res.render('login')
+      if (!req.user) {
+            res.render('login')
+      } else {
+            res.redirect('/acct')
+      }
 })
 
 app.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), (req, res) => {
