@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const passport = require('passport');    //requiring passport (1)
 const LocalStrategy = require('passport-local'); // requiring passport-local (2)
 const { isLoggedIn } = require('./middleware');
+const appError = require('./utils/appError');
 
 
 const configSession = {
@@ -100,6 +101,17 @@ app.post('/login', passport.authenticate('local', { failureFlash: true, failureR
       res.redirect(`/acct`);
 });
 
+app.all('*', (req, res, next) => {
+      next(new appError('Page not found', 404));
+});
+
+app.use((err, req, res, next) => {
+      const { status = 500 } = err;
+      if (!err.message) {
+            err.message = 'something went wrong';
+      }
+      res.status(status).render('error/errorPage', { err });
+});
 
 app.listen(3000, () => {
       console.log('listening to port:3000');

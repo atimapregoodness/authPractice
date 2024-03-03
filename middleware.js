@@ -6,3 +6,7 @@ module.exports.isLoggedIn = (req, res, next) => {
             next();
       }
 };
+
+module.exports.appError = (req, res, next) => {
+
+};
