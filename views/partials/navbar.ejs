@@ -1,11 +1,17 @@
 <nav>
-  <h1>Navbar!!</h1>
+  <h1 id="logo"><span id="logoSpan">G-</span>AuthApp</h1>
+
+  <div class="btns">
+    <div class="navLinks">
+      <ul>
+        <li><a href="Home">Home</a></li>
+        <li><a href="About">About</a></li>
+      </ul>
+    </div>
+    <% if (!currentUser) { %>
+    <a href="/login"><button>Login</button></a>
+    <% } else { %>
+    <a href="/logout"><button>Logout</button></a>
+    <% } %>
+  </div>
 </nav>
-<div class="links">
-  <% if (!currentUser) { %>
-  <a href="/signup"><button>Signup</button></a>
-  <a href="/login"><button>Login</button></a>
-  <% } else { %>
-  <a href="/logout"><button>Logout</button></a>
-  <% } %>
-</div>

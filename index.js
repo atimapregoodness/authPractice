@@ -42,6 +42,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', ejsMate);
@@ -77,6 +78,9 @@ app.get('/logout', (req, res, next) => {
 });
 
 app.post('/signup', async (req, res) => {
+      if (req.user) {
+            res.redirect('/acct');
+      }
       try {
             const { username, email, password } = req.body;
             const newUser = new User({ email, username });

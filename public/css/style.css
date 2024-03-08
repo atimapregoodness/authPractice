@@ -1,0 +1,99 @@
+* {
+  font-family: Manrope, -apple-system, "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+:root {
+  --lightGreen: #01925a;
+  --transition: all 0.5s;
+  --calibri: "Calibri Light";
+  --gBorderColor: #3d3d3d;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  background-color: #131315;
+}
+
+nav {
+  background: rgba(19, 19, 21, 0.5215686275);
+  border-bottom: 1px solid var(--gBorderColor);
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+nav #logoSpan {
+  font-size: 23px;
+  font-family: var(--calibri);
+  color: var(--lightGreen);
+}
+nav #logo {
+  font-family: var(--calibri);
+  font-size: 23px;
+  color: #ffffff;
+}
+nav .navLinks {
+  display: grid;
+  place-items: center;
+}
+nav .navLinks ol {
+  list-style: none;
+  transition: var(--transition);
+}
+nav .navLinks li {
+  margin-left: 1.5em;
+  padding: 0.4em 0.5em;
+  display: inline-block;
+  transition: var(--transition);
+}
+nav .navLinks li:hover {
+  border-bottom: 2px;
+  background-color: var(--lightGreen);
+}
+nav .navLinks a {
+  color: #ffffff;
+  text-decoration: none;
+}
+nav .btns {
+  display: flex;
+  padding-left: 45%;
+}
+nav .btns button {
+  margin-left: 5em;
+  padding: 0.2em;
+}
+
+#headerTxt {
+  color: var(--lightGreen);
+  text-align: center;
+  padding-top: 4em;
+  font-size: 30px;
+  font-family: var(--calibri);
+}
+
+.form {
+  padding: 1em;
+  width: 20em;
+  margin: auto;
+  margin-top: 0.5em;
+  border: 1px solid var(--gBorderColor);
+}
+.form p {
+  margin-top: 1em;
+}
+.form label {
+  font-family: var(--calibri);
+  color: #aaaaaa;
+}
+.form input {
+  margin-top: 0.5em;
+  padding: 0.2em;
+  font-size: 14px;
+  width: 100%;
+}/*# sourceMappingURL=style.css.map */

@@ -7,6 +7,3 @@ module.exports.isLoggedIn = (req, res, next) => {
       }
 };
 
-module.exports.appError = (req, res, next) => {
-
-};
