@@ -12,10 +12,39 @@
   --transition: all 0.5s;
   --calibri: "Calibri Light";
   --gBorderColor: #3d3d3d;
+  --backgroundColor: #131315;
 }
 
 button {
   cursor: pointer;
+  padding: 0.4em;
+  border-radius: 0.2em;
+  border: none;
+  font-size: 14px;
+}
+
+.mainBtn {
+  transition: var(--transition);
+  color: #ffffff;
+  border: none;
+  background-color: var(--lightGreen);
+
+  &:hover {
+    transition: var(--transition);
+    background-color: #02633d;
+  }
+}
+
+.dangerBtn {
+  border: none;
+  color: #ffffff;
+  transition: var(--transition);
+  background-color: #ff3737;
+
+  &:hover {
+    transition: var(--transition);
+    background-color: #b82a2a;
+  }
 }
 
 body {
@@ -25,7 +54,7 @@ body {
 nav {
   background: #13131585;
   border-bottom: 1px solid var(--gBorderColor);
-  padding: 0.5em;
+  padding: 0.3em;
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -36,6 +65,7 @@ nav {
   }
 
   #logo {
+    padding-top: 0.1em;
     font-family: var(--calibri);
     font-size: 23px;
     color: #ffffff;
@@ -53,13 +83,16 @@ nav {
       padding: 0.4em 0.5em;
       display: inline-block;
       transition: var(--transition);
+      border-radius: 0.2em;
 
       &:hover {
         border-bottom: 2px;
         background-color: var(--lightGreen);
+        border-radius: 0.2em;
       }
     }
     a {
+      font-size: 15px;
       color: #ffffff;
       text-decoration: none;
     }
@@ -70,25 +103,29 @@ nav {
     padding-left: 45%;
 
     button {
+      margin-top: 0.2em;
+      font-size: 15px;
       margin-left: 5em;
-      padding: 0.2em;
+      padding: 0.4em;
     }
   }
 }
 
 #headerTxt {
-  color: var(--lightGreen);
+  color: #ffffff;
   text-align: center;
-  padding-top: 4em;
+  padding-top: 2em;
   font-size: 30px;
   font-family: var(--calibri);
 }
+
 .form {
   padding: 1em;
-  width: 20em;
+  width: 17em;
   margin: auto;
   margin-top: 0.5em;
   border: 1px solid var(--gBorderColor);
+  border-radius: 0.5em;
 
   p {
     margin-top: 1em;
@@ -99,8 +136,54 @@ nav {
   }
   input {
     margin-top: 0.5em;
-    padding: 0.2em;
+    padding: 0.4em;
     font-size: 14px;
     width: 100%;
+    border: none;
+    border-radius: 0.2em;
+  }
+
+  button {
+    margin-top: 0.5em;
+    width: 100%;
+    background-color: #2e2e2e;
+    border: 1px solid var(--gBorderColor);
+    color: #ffffff;
+    transition: var(--transition);
+
+    &:hover {
+      transition: var(--transition);
+      background-color: var(--gBorderColor);
+    }
+  }
+  .mainBtn {
+    transition: var(--transition);
+    color: #ffffff;
+    border: none;
+    background-color: var(--lightGreen);
+
+    &:hover {
+      transition: var(--transition);
+      background-color: #02633d;
+    }
+  }
+
+  #noAcctTxt {
+    color: rgb(255, 156, 156);
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+.error {
+  h1 {
+    padding: 0.4em;
+    color: #ffffff96;
+    background-color: rgba(255, 0, 0, 0.192);
+    font-size: 15px;
+    font-family: var(--calibri);
+    text-align: center;
+    font-style: italic;
   }
 }

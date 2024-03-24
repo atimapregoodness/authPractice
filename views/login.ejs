@@ -1,7 +1,11 @@
 <%- layout('layout/boilerplate') %>
 <h1 id="headerTxt">Login</h1>
 <div class="form">
-  <h1><%= error %></h1>
+  <% if (error.length) {%>
+  <div class="error">
+    <h1><%= error %></h1>
+  </div>
+  <% } %>
   <form action="/login" method="post">
     <p>
       <label for="username">Enter Username</label>
@@ -24,8 +28,8 @@
       />
     </p>
     <h4><%= incorrect %></h4>
-    <button type="submit">Login</button>
+    <button type="submit" class="mainBtn">Login</button>
   </form>
-  <p>i don't have an account?</p>
+  <p id="noAcctTxt">I don't have an account?</p>
   <a href="/signup"><button>Signup</button></a>
 </div>
