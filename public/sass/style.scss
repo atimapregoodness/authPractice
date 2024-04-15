@@ -104,9 +104,10 @@ nav {
 
     button {
       margin-top: 0.2em;
+      background: var(--gBorderColor);
       font-size: 15px;
       margin-left: 5em;
-      padding: 0.4em;
+      padding: 0.5em;
     }
   }
 }
@@ -177,13 +178,67 @@ nav {
 }
 
 .error {
+  // border: 1px solid var(--gBorderColor);
+  animation: show ease-in 0.2s;
+  padding: 0.5em;
+  background-color: #ad2a2a;
+  opacity: 0.8;
+  display: flex;
+  // border-radius: 0.3em;
+
   h1 {
-    padding: 0.4em;
-    color: #ffffff96;
-    background-color: rgba(255, 0, 0, 0.192);
+    color: #ffffff;
     font-size: 15px;
-    font-family: var(--calibri);
     text-align: center;
-    font-style: italic;
+    padding: 0.5em;
+    // font-style: italic;
+    font-family: "Calibri Light";
+  }
+
+  #closeBtn {
+    margin-left: 35%;
+    border: none;
+    background: #fff;
+    font-family: "Calibri";
+    font-size: 10px;
+    width: auto;
+    padding: 0em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    color: #000000;
   }
 }
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    padding: 0em;
+  }
+  50% {
+    padding: 0.25em;
+    opacity: 0.5;
+  }
+  100% {
+    padding: 0.5em;
+    opacity: 1;
+  }
+}
+
+.closed {
+  animation: close ease-out 0.2s;
+  display: none;
+}
+// @keyframes close {
+//   0% {
+//     opacity: 1;
+//     padding: 0.5em;
+//   }
+//   50% {
+//     padding: 0.25em;
+//     opacity: 0.5;
+//   }
+//   100% {
+//     padding: 0.5em;
+//     opacity: 0;
+//   }
+// }

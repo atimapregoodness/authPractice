@@ -23,7 +23,6 @@ const configSession = {
             maxAge: 1000 * 60 * 24 * 7
       }
 };
-
 mongoose.connect('mongodb://127.0.0.1:27017/passportAuth', { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
             console.log("CONNECTION SUCCEEDED ");
@@ -31,7 +30,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/passportAuth', { useNewUrlParser: tr
             console.log(`CONNECTION FAILED`);
             console.log(err);
       });
-
 
 app.use(session(configSession));
 
