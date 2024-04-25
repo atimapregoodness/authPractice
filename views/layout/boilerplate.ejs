@@ -7,7 +7,12 @@
     <title>authPractice</title>
   </head>
   <body>
-    <%- include('../partials/navbar') %> <%- body %>
+    <% if (error.length) {%>
+    <div class="error">
+      <h1><%= error %></h1>
+      <button id="closeBtn">x</button>
+    </div>
+    <% } %> <%- include('../partials/navbar') %> <%- body %>
   </body>
   <script src="js/app.js"></script>
 </html>

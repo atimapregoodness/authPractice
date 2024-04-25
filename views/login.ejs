@@ -1,12 +1,6 @@
 <%- layout('layout/boilerplate') %>
 <h1 id="headerTxt">Login</h1>
 <div class="form">
-  <% if (error.length) {%>
-  <div class="error">
-    <h1><%= error %></h1>
-    <button id="closeBtn">x</button>
-  </div>
-  <% } %>
   <form action="/login" method="post">
     <p>
       <label for="username">Enter Username</label>

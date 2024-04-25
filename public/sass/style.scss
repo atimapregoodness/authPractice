@@ -179,11 +179,13 @@ nav {
 
 .error {
   // border: 1px solid var(--gBorderColor);
-  animation: show ease-in 0.2s;
-  padding: 0.5em;
+  animation: show ease-in 1s;
+  padding: 0.2em;
   background-color: #ad2a2a;
-  opacity: 0.8;
   display: flex;
+  left: 45%;
+  top: 5%;
+  position: absolute;
   // border-radius: 0.3em;
 
   h1 {
@@ -196,7 +198,6 @@ nav {
   }
 
   #closeBtn {
-    margin-left: 35%;
     border: none;
     background: #fff;
     font-family: "Calibri";
@@ -211,14 +212,17 @@ nav {
 
 @keyframes show {
   0% {
+    top: -50%;
     opacity: 0;
     padding: 0em;
   }
   50% {
+    top: 1%;
     padding: 0.25em;
     opacity: 0.5;
   }
   100% {
+    top: 5%;
     padding: 0.5em;
     opacity: 1;
   }
