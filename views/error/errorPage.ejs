@@ -1,3 +1,6 @@
 <%- layout('layout/boilerplate') %>
-<h1><%= err.status %></h1>
-<h2><%= err.message %></h2>
+<div class="errPageContainer">
+  <h1><%= err.status %></h1>
+  <h2><%= err.message %></h2>
+  <a href="/login"><button>Back to Login</button></a>
+</div>

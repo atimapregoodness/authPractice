@@ -8,10 +8,13 @@
   </head>
   <body>
     <% if (error.length) {%>
-    <div class="error">
-      <h1><%= error %></h1>
-      <button id="closeBtn">x</button>
+    <div class="errContainer">
+      <div class="error">
+        <h1><%= error %></h1>
+        <button id="closeBtn">x</button>
+      </div>
     </div>
+
     <% } %> <%- include('../partials/navbar') %> <%- body %>
   </body>
   <script src="js/app.js"></script>
