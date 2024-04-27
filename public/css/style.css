@@ -50,7 +50,7 @@ body {
 
 nav {
   background: rgba(19, 19, 21, 0.5215686275);
-  border-bottom: 1px solid var(--gBorderColor);
+  border-bottom: 1px solid rgba(170, 170, 170, 0.1176470588);
   padding: 0.3em;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -76,20 +76,18 @@ nav .navLinks ol {
 }
 nav .navLinks li {
   margin-left: 1.5em;
-  padding: 0.4em 0.5em;
+  padding: 0.5em 0.6em;
   display: inline-block;
   transition: var(--transition);
   border-radius: 0.2em;
+  font-size: 15px;
+  color: #ffffff;
+  text-decoration: none;
 }
 nav .navLinks li:hover {
   border-bottom: 2px;
   background-color: var(--lightGreen);
   border-radius: 0.2em;
-}
-nav .navLinks a {
-  font-size: 15px;
-  color: #ffffff;
-  text-decoration: none;
 }
 nav .btns {
   display: flex;
@@ -238,23 +236,35 @@ nav .btns button {
 }
 .errPageContainer {
   display: grid;
-  padding-top: 4em;
   place-items: center;
+  padding-top: 8em;
   height: auto;
   width: auto;
-  margin: auto;
+}
+.errPageContainer .text {
+  display: flex;
+  width: auto;
 }
 .errPageContainer h1 {
-  font-size: 150px;
+  font-size: 50px;
   font-family: "Calibri Light";
   color: #ff4444;
-  border-bottom: 1px solid #aaaaaa;
+  border-right: 1px solid rgba(170, 170, 170, 0.568627451);
+  padding-right: 0.5em;
 }
 .errPageContainer h2 {
-  font-size: 30px;
+  padding-left: 1em;
+  padding-top: 1em;
+  font-size: 20px;
   color: #aaaaaa;
   font-family: "Calibri Light";
 }
+.errPageContainer p {
+  color: rgba(255, 255, 255, 0.231372549);
+  font-family: "Calibri Light";
+  padding-top: 1em;
+  font-size: 13px;
+}
 .errPageContainer button {
-  margin-top: 1em;
+  margin-top: 3em;
 }/*# sourceMappingURL=style.css.map */
