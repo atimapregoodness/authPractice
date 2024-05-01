@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
+const allCtl = require('./controllers/all');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');    //requiring passport (1)
@@ -61,44 +62,15 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/acct', isLoggedIn, async (req, res) => {
-      res.render('acct');
-});
-app.get('/signup', (req, res) => {
-      res.render('signup');
-});
+app.get('/acct', isLoggedIn, allCtl.renderAcct);
 
-app.get('/logout', (req, res, next) => {
-      req.logOut(function (err) {
-            return next(err);
-      });
-      req.flash('logoutMsg', 'successfully logout');
-      res.redirect('/login');
-});
+app.get('/signup', allCtl.renderSignup);
 
-app.post('/signup', async (req, res) => {
-      if (req.user) {
-            res.redirect('/acct');
-      }
-      try {
-            const { username, email, password } = req.body;
-            const newUser = new User({ email, username });
-            const registeredUser = await User.register(newUser, password);
-            res.redirect('/login');
+app.post('/signup', allCtl.createAcct);
 
-      } catch (e) {
-            req.flash('error', e.message);
-            res.redirect('/signup');
-      }
-});
+app.get('/logout', allCtl.logout);
 
-app.get('/login', (req, res) => {
-      if (!req.user) {
-            res.render('login');
-      } else {
-            res.redirect('/acct');
-      }
-});
+app.get('/login', allCtl.loginPg);
 
 app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
       res.redirect(`/acct`);
@@ -111,11 +83,11 @@ app.all('*', (req, res, next) => {
 app.use((err, req, res, next) => {
       const { status = 500 } = err;
       if (!err.message) {
-            err.message = 'something went wrong';
+            err.message = 'so mething went wrong';
       }
       res.status(status).render('error/errorPage', { err });
 });
 
 app.listen(3000, () => {
       console.log('listening to port:3000');
-});
+}); 
