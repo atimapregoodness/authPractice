@@ -39,3 +39,7 @@ module.exports.createAcct = async (req, res) => {
         res.redirect('/signup');
     }
 };
+
+module.exports.login = (req, res) => {
+    res.redirect(`/acct`);
+};

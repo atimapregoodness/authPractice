@@ -72,9 +72,7 @@ app.get('/logout', allCtl.logout);
 
 app.get('/login', allCtl.loginPg);
 
-app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-      res.redirect(`/acct`);
-});
+app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), allCtl.login);
 
 app.all('*', (req, res, next) => {
       next(new appError('Page not found', 404));
@@ -83,11 +81,11 @@ app.all('*', (req, res, next) => {
 app.use((err, req, res, next) => {
       const { status = 500 } = err;
       if (!err.message) {
-            err.message = 'so mething went wrong';
+            err.message = 'something went wrong';
       }
       res.status(status).render('error/errorPage', { err });
 });
 
 app.listen(3000, () => {
       console.log('listening to port:3000');
-}); 
+});
